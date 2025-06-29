@@ -9,14 +9,14 @@ import kotlin.test.Test
 声明样式：
 1. string/number/boolean
 2. [string]
-2. { "propertyA": string }
-2. { "propertyA": { "pc": string, "mobile": string } }
-3. { "_": string }
-3. { "propertyA": [string] }
-4. { "propertyA": [string], "propertyB": number }
-5. { "propertyA": [string], "propertyB": {"pc": ....}}
-6. string(max(5), notBlank....)
-7. string(default(....)) // 比较难，往后排。💪。
+2. { propertyA: string }
+2. { propertyA: { pc: string, mobile: string } }
+3. { _: any }
+3. { propertyA: [string] }
+4. { propertyA: [string],propertyB: number }
+5. { propertyA: [string], propertyB: {pc: ....}}
+6. string/max(5)/notBlank....
+7. string/default(....) // 比较难，往后排。💪。
  */
 
 class RJsonTest() {
