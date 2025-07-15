@@ -1,7 +1,12 @@
-package xyz.nietongxue.simple_schema
+package xyz.nietongxue.simpleSchema.jsonSchema
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import xyz.nietongxue.simpleSchema.ArraySchema
+import xyz.nietongxue.simpleSchema.DataSchema
+import xyz.nietongxue.simpleSchema.ObjectSchema
+import xyz.nietongxue.simpleSchema.PrimitiveSchema
+import kotlin.collections.iterator
 
 
 val defaultAnnotation = $$"$schema" to "https://json-schema.org/draft/2020-12/schema"

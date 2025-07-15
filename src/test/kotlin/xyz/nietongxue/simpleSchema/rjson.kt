@@ -1,6 +1,9 @@
-package xyz.nietongxue.simple_schema
+package xyz.nietongxue.simpleSchema
 
-import xyz.nietongxue.simple_schema.RJson.rjsonToJackson
+import xyz.nietongxue.simpleSchema.parse.RJson
+import xyz.nietongxue.simpleSchema.parse.RJson.rjsonToJackson
+import xyz.nietongxue.simpleSchema.parse.RJsonFormat
+import xyz.nietongxue.simpleSchema.parse.parseData
 import kotlin.test.Test
 
 
@@ -64,7 +67,7 @@ class RJsonTest() {
         val rjson = """
             { propertyA: { pc: string/maxL(10)/minL(5)/required/notEmpty, mobile: string } }
             """
-        val dataS = parse(rjson, RJsonFormat())
+        val dataS = parseData(rjson, RJsonFormat())
         println(dataS)
     }
 }

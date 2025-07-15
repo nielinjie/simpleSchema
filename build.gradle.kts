@@ -31,6 +31,8 @@ dependencies {
 
     implementation("xyz.nietongxue:common-jvm:2.0.0")
 
+    implementation("io.swagger.core.v3:swagger-models:2.2.7")
+
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("com.github.erosb:json-sKema:0.20.0")
 

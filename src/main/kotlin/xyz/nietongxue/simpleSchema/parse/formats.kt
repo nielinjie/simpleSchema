@@ -1,9 +1,9 @@
-package xyz.nietongxue.simple_schema
+package xyz.nietongxue.simpleSchema.parse
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import xyz.nietongxue.common.base.cList
-import xyz.nietongxue.simple_schema.RJson.rjsonToJackson
+import xyz.nietongxue.simpleSchema.parse.RJson.rjsonToJackson
 
 
 interface Format {

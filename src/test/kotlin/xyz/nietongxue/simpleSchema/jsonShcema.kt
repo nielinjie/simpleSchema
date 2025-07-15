@@ -1,4 +1,4 @@
-package xyz.nietongxue.simple_schema
+package xyz.nietongxue.simpleSchema
 
 import com.github.erosb.jsonsKema.FormatValidationPolicy
 import com.github.erosb.jsonsKema.JsonParser
@@ -8,6 +8,9 @@ import com.github.erosb.jsonsKema.SchemaLoader
 import com.github.erosb.jsonsKema.ValidationFailure
 import com.github.erosb.jsonsKema.Validator
 import com.github.erosb.jsonsKema.ValidatorConfig
+import xyz.nietongxue.simpleSchema.jsonSchema.toJsonSchema
+import xyz.nietongxue.simpleSchema.parse.RJsonFormat
+import xyz.nietongxue.simpleSchema.parse.parseData
 import kotlin.test.Test
 
 
@@ -17,7 +20,7 @@ class JsonSchemaTest() {
         val rjson = """
             { computer: { pc: string/maxL(10)/minL(5)/required/notEmpty, mobile: string } ,_: string}
             """
-        val dataS = parse(rjson, RJsonFormat())
+        val dataS = parseData(rjson, RJsonFormat())
         val jsonSchema = dataS.toJsonSchema()
         println(jsonSchema.toPrettyString())
     }
@@ -27,7 +30,7 @@ class JsonSchemaTest() {
         val rjson = """
             { computer: [{ pc: string/maxL(10)/minL(5)/required/notEmpty, mobile: string }] ,_: string}
             """
-        val dataS = parse(rjson, RJsonFormat())
+        val dataS = parseData(rjson, RJsonFormat())
         val jsonSchema = dataS.toJsonSchema()
         println(jsonSchema.toPrettyString())
     }
@@ -86,7 +89,7 @@ class JsonSchemaTest() {
         val rjson = """
             { computers: [{ pc: string/maxL(10)/minL(5)/required/notEmpty, mobile: string }] ,_: string}
             """
-        val dataS = parse(rjson, RJsonFormat())
+        val dataS = parseData(rjson, RJsonFormat())
         val jsonSchema = dataS.toJsonSchema()
         val schemaJson = jsonSchema.toPrettyString()
         val schema: Schema = SchemaLoader(schemaJson).load()

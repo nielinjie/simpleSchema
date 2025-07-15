@@ -1,6 +1,8 @@
-package xyz.nietongxue.simple_schema
+package xyz.nietongxue.simpleSchema
 
 import org.assertj.core.api.Assertions.assertThat
+import xyz.nietongxue.simpleSchema.parse.Json
+import xyz.nietongxue.simpleSchema.parse.parseData
 import kotlin.test.Test
 import kotlin.test.fail
 
@@ -83,7 +85,7 @@ class ParseTest() {
     private fun schema(jsonString: String): DataSchema {
         val format = Json()
         val json = format.json(jsonString)
-        val parsed = parse(json,format)
+        val parsed = parseData(json, format)
         return parsed
     }
 }
