@@ -1,6 +1,6 @@
 package xyz.nietongxue.simpleSchema
 
-import xyz.nietongxue.simpleSchema.parse.RJsonFormat
+import xyz.nietongxue.simpleSchema.json.RJsonFormat
 import xyz.nietongxue.simpleSchema.parse.parseOperation
 import kotlin.test.Test
 
@@ -13,7 +13,7 @@ class OperationTest() {
                 response: string
             }
             """
-        val op = parseOperation(rjson, RJsonFormat())
+        val op = parseOperation(rjson, RJsonFormat)
         println(op)
     }
 
@@ -28,7 +28,7 @@ class OperationTest() {
                 ]
             }
             """
-        val op = parseOperation(rjson, RJsonFormat())
+        val op = parseOperation(rjson, RJsonFormat)
         println(op)
     }
 }

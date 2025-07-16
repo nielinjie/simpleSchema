@@ -1,10 +1,18 @@
-package xyz.nietongxue.simpleSchema.parse
+package xyz.nietongxue.simpleSchema.json
 
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.kotlinModule
 import xyz.nietongxue.common.base.cList
+import xyz.nietongxue.simpleSchema.parse.RJson
 import xyz.nietongxue.simpleSchema.parse.RJson.rjsonToJackson
 
+
+/**
+ * TODO 搬到 json 的 common util 里面去。
+ */
 
 interface Format {
     fun json(string: String): JsonNode
@@ -31,7 +39,7 @@ interface Format {
 /*
 https://www.relaxedjson.org
  */
-class RJsonFormat() : Format {
+object RJsonFormat : Format {
     override fun json(string: String): JsonNode {
         return rjsonToJackson(RJson.parse(string))
     }
@@ -47,9 +55,16 @@ json
 就是一般的 json。
  */
 
-class Json() : Format {
+object NormalJson : Format {
     override fun json(string: String): JsonNode {
         return jacksonObjectMapper().readTree(string)
     }
 
+}
+
+object Yaml : Format {
+    override fun json(string: String): JsonNode {
+        return ObjectMapper(YAMLFactory()).registerModule(kotlinModule())
+            .readTree(string)
+    }
 }

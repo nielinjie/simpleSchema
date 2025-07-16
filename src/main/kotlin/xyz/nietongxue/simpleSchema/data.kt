@@ -1,7 +1,7 @@
 package xyz.nietongxue.simpleSchema
 
 import xyz.nietongxue.common.base.cList
-import xyz.nietongxue.simpleSchema.parse.Format
+import xyz.nietongxue.simpleSchema.json.Format
 
 
 interface DataSchema

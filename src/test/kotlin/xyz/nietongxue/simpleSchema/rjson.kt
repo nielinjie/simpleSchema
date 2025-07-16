@@ -2,7 +2,7 @@ package xyz.nietongxue.simpleSchema
 
 import xyz.nietongxue.simpleSchema.parse.RJson
 import xyz.nietongxue.simpleSchema.parse.RJson.rjsonToJackson
-import xyz.nietongxue.simpleSchema.parse.RJsonFormat
+import xyz.nietongxue.simpleSchema.json.RJsonFormat
 import xyz.nietongxue.simpleSchema.parse.parseData
 import kotlin.test.Test
 
@@ -34,6 +34,7 @@ class RJsonTest() {
         val json = rjsonToJackson(parse)
         println(json.toPrettyString())
     }
+
     @Test
     fun test2() {
         val rjson = """
@@ -67,7 +68,32 @@ class RJsonTest() {
         val rjson = """
             { propertyA: { pc: string/maxL(10)/minL(5)/required/notEmpty, mobile: string } }
             """
-        val dataS = parseData(rjson, RJsonFormat())
+        val dataS = parseData(rjson, RJsonFormat)
+        println(dataS)
+    }
+    @Test
+    fun testYaml(){
+        val rjson = """
+                propertyA:
+                    pc: string,maxL(10),minL(5),required,notEmpty
+                    mobile: string
+            """.trimIndent()
+        val dataS = parseData(rjson, )
+        println(dataS)
+    }
+
+    @Test
+    fun testNormal(){
+        val json = """
+             {
+                "name": "string",
+                "house":[
+                   { "address":"string",
+                   "_":"string"}
+                ]
+            }
+        """.trimIndent()
+        val dataS = parseData(json, )
         println(dataS)
     }
 }

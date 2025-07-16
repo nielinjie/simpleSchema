@@ -8,6 +8,8 @@ import xyz.nietongxue.simpleSchema.ArraySchema
 import xyz.nietongxue.simpleSchema.DataSchema
 import xyz.nietongxue.simpleSchema.ObjectSchema
 import xyz.nietongxue.simpleSchema.PrimitiveSchema
+import xyz.nietongxue.simpleSchema.json.Format
+import xyz.nietongxue.simpleSchema.json.autoParse
 
 fun parseData(json: JsonNode, format: Format): DataSchema {
     return when (json) {
@@ -20,8 +22,12 @@ fun parseData(json: JsonNode, format: Format): DataSchema {
     }
 }
 
-fun parseData(json: String, format: Format): DataSchema {
-    return parseData(format.json(json), format)
+fun parseData(json: String, format: Format? = null): DataSchema {
+    return if (format == null) autoParse(json).let {
+        parseData(it.first, it.second)
+    } else {
+        parseData(format.json(json), format)
+    }
 }
 
 

@@ -16,6 +16,7 @@ fun Operation.toOpenApi(): SO {
             name = it.name
             schema = it.schema.toOpenApi()
             required = it.required
+            `in` = it.`in`
             style = when (it.style) {
                 "form" -> FORM
                 "simple" -> SIMPLE
@@ -36,18 +37,22 @@ fun Operation.toOpenApi(): SO {
             }
         }
     }
-    val response = this.response?.let {
+    val response =
         ApiResponses().apply {
-            this["200"] = ApiResponse().apply {
-                content = Content().apply {
-                    val mediaType = MediaType().apply {
-                        schema = it.toOpenApi()
+            this["200"] = this@toOpenApi.response?.let {
+                ApiResponse().apply {
+                    description = "OK"
+                    content = Content().apply {
+                        val mediaType = MediaType().apply {
+                            schema = it.toOpenApi()
+                        }
+                        this["application/json"] = mediaType
                     }
-                    this["application/json"] = mediaType
                 }
+            } ?: ApiResponse().apply {
+                description = "no return"
             }
         }
-    }
     return SO().apply {
         requestBody = request
         responses = response

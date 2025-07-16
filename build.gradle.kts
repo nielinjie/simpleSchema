@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "xyz.nietongxue"
-version = "1.0.0-SNAPSHOT"
+version = "2.0.0-SNAPSHOT"
 
 repositories {
     mavenLocal()
@@ -25,6 +25,7 @@ dependencies {
     //jackson json 相关
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
     implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2")
     //jackson kotlin 相关
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
     implementation("tv.twelvetone.rjson:rjson:1.3.1-SNAPSHOT")
